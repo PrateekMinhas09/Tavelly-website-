@@ -1,0 +1,345 @@
+/*Global styles*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+button{
+    padding:2rem 6rem;
+    
+    color:white;
+    background-color: lightcoral;
+    border:none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    border-radius: 10px;
+    /*animating states*/
+    transition: background-color 0.2s ease-in;/*which property of the element to transition and by how many seconds to what style*/
+}
+
+button:hover
+{
+    background-color: rgb(175, 92, 92);
+}
+
+html{
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    font-family: 'Raleway', sans-serif;
+    
+}
+h1{
+    font-size: 2.6rem;
+}
+
+li , button, label, input, p{
+font-size: 2rem;
+}
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-size: 3rem;
+    font-weight: normal;
+}
+h4,h5{
+    font-size: 2.8rem;
+}
+ul{
+    list-style: none;
+}
+/*NAV SECTION WITH HERO*/
+
+.main-head{
+    background: rgb(47, 49, 49);
+    color:white;
+    display: flex;
+
+    z-index: 7;
+    position:sticky;/*will always remain on top now*/
+    top:0px;/*activating position:sticky OR wheere to stick on the screen*/
+}
+nav{
+    padding:1rem;
+    min-height: 10vh;
+    display: flex;/*affects the 1st children and not their grandchildren*/
+    width:90%;
+    margin:auto;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+   
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex:1 1 40rem;
+    list-style-type: none;
+    
+}
+#logo{
+    flex:2 1 40rem;
+    font-family: 'Pattaya', sans-serif;
+    font-weight: normal;
+}
+.hero{
+    background:linear-gradient(rgba(0,0,0,0.5),transparent) ,url("C:/Users/ASUS/Desktop/devedcourse/projects/travelwebsite/img/landing-page.jpg");/*chaining the url and color , the first one will be the upper layer*/
+    min-height: 90vh;/*navs min height was 10vh*/
+    background-repeat: no-repeat;
+    background-size: cover;/*sretch out and zoom it in*/
+    background-position: center;
+   color:white;
+   display: flex;
+   flex-direction: column;
+  justify-content: center;
+   align-items: center;/*horizontal is flexdiriscol*/
+
+}
+
+.hero h3{
+    text-align: center;
+    padding:3rem;
+
+}
+.hero h2{
+    text-align: center;
+}
+
+
+
+/*Locations SECTION*/
+#locations{
+
+    min-height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.5),transparent) ,url("C:/Users/ASUS/Desktop/devedcourse/projects/travelwebsite/img/new-york-page.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    
+    align-items: center;/*since by default the flexdir is along rows , therefore the align items will align along the coloumn*/
+    position:relative;
+    overflow: hidden;/*anything ouside this section is hidden , anything which overflowed out of this section is hidden
+    ---used for the cloud 1 animation going out of bounds*/
+}
+
+.locations-head {
+    width:90%;
+
+    margin:auto
+}
+.locations-head h2{
+    font-weight: bolder;
+    padding:1rem 0rem;
+    
+}
+
+.locations-head h3{
+    padding:4rem 0rem;
+    font-weight: bold;
+    /*how to have colorgradient TEXT (HIGHKEY HACKS)*/
+    background: linear-gradient(rgb(77, 41, 41) , rgb(255, 197, 197));
+    -webkit-background-clip: text;
+
+  
+  
+  -webkit-text-fill-color: transparent;
+
+  
+}
+
+.cloud{
+    position: absolute;/*takes the cloud out of the section making it irreletive of the section , to make it relative to the section we need to add position:relative to the 
+    section or location class*/
+    top:0%;
+    right:0%;
+    pointer-events: none;
+
+}
+.moving-cloud1{
+    animation: cloudAnimation 5s infinite alternate ease-in-out;
+}
+.moving-cloud2{
+    top:20%;/*we can see the image cut crease, so we need to push it behind the 1st cloud image by using Z index*/
+    z-index: -1;/*used for stsacking and layering*/
+    opacity:0.5;
+    animation: cloudAnimation 8s infinite alternate ease-in-out;
+
+
+
+}
+/*1st way of transitioning/animation was using transition property on the element , the second one is using KeyFrames(can chain together multiple animations)*/
+@keyframes cloudAnimation{
+    /*we can write from- to or 0%-25%-100% ---latter can add break points for advanced animation*/
+
+    0%{
+        transform: translate(10%,-10%);/*x,y-axis*/
+    }
+    100%{
+        transform: translate(0%,0%);
+    }
+ 
+}
+/*BENEFITS SECTION*/
+.benefits-head{
+    background: rgb(102, 52, 52);
+    padding:3rem;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.benefits-head h3{
+    padding:1rem;
+        
+}
+
+.cards{
+    width: 90%;
+    margin:auto;
+    display: flex;
+    min-height: 70vh;
+    align-items: center;/*takes space acc to the content inside or the space we provide min height in .card class , by def align items is stretch*/
+    flex-wrap: wrap;
+}
+.card{
+  
+    flex:1 1 25rem;
+    min-height: 40vh;
+    margin:2rem 5rem;
+    box-shadow: -10px 10px 20px rgba(102, 40, 40, 0.199), 10px 10px 20px rgba(0, 0, 0, 0.199);
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    text-align: center;
+    
+    
+}
+
+.cards img{
+    padding:1rem 0rem;
+    height: 50px;
+   background: rgb(158, 80, 80);
+}
+
+.card h4,p{
+    font-weight: bold;
+    padding:1rem 0rem;
+
+}
+.card h4{
+    margin:2rem;
+}
+/*CONTACT INFO*/
+
+#contact{
+    min-height: 100vh;
+    background:linear-gradient(rgba(0,0,0,0.5),transparent), url("C:/Users/ASUS/Desktop/devedcourse/projects/travelwebsite/img/contact-mountain.png");
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-wrapper{
+    background:rgb(87, 46, 46,0.7);
+    
+    color:white;
+    border-radius: 20px;
+}
+.form-head{
+    padding:2rem;
+    text-align: center;
+}
+.name-form,
+.email-form{
+    padding:1rem;
+    text-align: center;
+}
+.form-wrapper label{
+    padding:1rem;
+}
+.form-wrapper button{
+    width:100%;
+    margin-top: 8rem;
+    padding:2rem;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+/*FOOTER*/
+
+footer{
+    background:rgb(47, 49, 49);
+    color:white;
+  
+}
+.footer-wrapper{
+display:flex;
+padding:2rem;
+width:90%;
+margin:auto;
+align-items: center;
+min-height: 10vh;
+flex-wrap: wrap;
+}
+
+footer ul{
+    display: flex;
+    flex:1 1 40rem;
+    align-items: center;
+    justify-content: space-between;
+}
+footer h5{
+    flex:1 1 40rem;
+    
+}
+/*media Querries*/
+@media screen and (max-width:910px)
+{
+    html{
+        font-size: 45%;
+    }
+ nav{
+     text-align: center;
+ }
+ #logo{
+     padding:1rem;
+ }
+ .cloud{
+     height:40rem;
+     
+     
+ }
+ .moving-cloud1{
+z-index: -1;
+ }
+ .moving-cloud2{
+z-index: -2;
+ }
+ .locations-head h3{
+
+    padding:1rem 0rem;;
+    background: rgb(110, 58, 58,0.9);
+    -webkit-text-fill-color: white;
+
+ }
+ .form-wrapper{
+     width:100%;
+ }
+ footer h5{
+     padding-bottom: 2rem;
+     text-align: center;
+ }
+}
